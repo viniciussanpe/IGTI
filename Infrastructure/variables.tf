@@ -15,5 +15,5 @@ variable "airflow_subnet_id" {
 }
 
 variable "vpc_id" {
-  default = "my-vpc-igti-mod1"
+  default = "vpc-5d71c736"
 }
