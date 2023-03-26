@@ -7,7 +7,7 @@ variable "lambda_function_name" {
 }
 
 variable "key_pair_name" {
-  default = "my-vpc-igti-mod1"
+  default = "vini-igti-teste"
 }
 
 variable "airflow_subnet_id" {
