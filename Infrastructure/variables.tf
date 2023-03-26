@@ -1,48 +1,19 @@
-variable "region_id" {
+variable "aws_region" {
   default = "us-east-2"
 }
 
 variable "lambda_function_name" {
-  default = "IGTIExecutaEMR"
+  default = "IGTIexecutaEMRaovivo"
 }
 
-variable "account" {
-  default = 127012818163
+variable "key_pair_name" {
+  default = "ney-igti-teste"
 }
 
-# Prefix configuration and project common tags
-locals {
-  prefix = "${var.prefix}-${terraform.workspace}"
-  common_tags = {
-    Project      = "RAIS"
-    ManagedBy    = "Terraform"
-    Department   = "XPed",
-    Provider     = "A3DATA",
-    Owner        = "Data Engineering"
-    BusinessUnit = "Data"
-    Billing      = "Infrastructure"
-    Environment  = terraform.workspace
-    UserEmail    = "neylson.crepalde@a3data.com.br"
-  }
+variable "airflow_subnet_id" {
+  default = "subnet-4cef5427"
 }
 
-variable "bucket_names" {
-  description = "Create S3 buckets with these names"
-  type        = list(string)
-  default = [
-    "landing-zone",
-    "processing-zone",
-    "delivery-zone"
-  ]
-}
-
-variable "database_names" {
-  description = "Create databases with these names"
-  type        = list(string)
-  default = [
-    #landing-zone
-    "dl_landing_zone",
-    "dl_processing_zone",
-    "dl_delivery_zone"
-  ]
+variable "vpc_id" {
+  default = "vpc-d724b4bc"
 }
