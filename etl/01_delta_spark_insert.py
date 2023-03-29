@@ -1,5 +1,7 @@
 from pyspark.sql import SparkSession
+from pyspark.sql import functions as f
 from pyspark.sql.functions import col, min, max
+
 
 # Cria objeto da Spark Session
 spark = (SparkSession.builder.appName("DeltaExercise")
@@ -18,7 +20,8 @@ enem = (
     .option("inferSchema", True)
     .option("header", True)
     .option("delimiter", ";")
-    .load("s3://datalake-vini-igti-edc/raw-data/enem")
+    .option( "encoding", "latin1")
+    .load("s3://datalake-vini-igti-edc-tf/csv/rais")
 )
 
 # Escreve a tabela em staging em formato delta
@@ -29,5 +32,7 @@ print("Writing delta table...")
     .mode("overwrite")
     .format("delta")
     .partitionBy("year")
-    .save("s3://datalake-vini-igti-edc-tf/staging-zone/enem")
+    .save("s3://datalake-vini-igti-edc-tf/raw-data/rais")
 )
+
+
