@@ -20,8 +20,12 @@ enem = (
     .option("inferSchema", True)
     .option("header", True)
     .option("delimiter", ";")
+<<<<<<< HEAD
     .option( "encoding", "latin1")
     .load("s3://datalake-vini-igti-edc-tf/csv/rais")
+=======
+    .load("s3://datalake-ney-igti-edc/raw-data/enem")
+>>>>>>> parent of 8e0743c (fix spark configs)
 )
 
 # Escreve a tabela em staging em formato delta
@@ -32,7 +36,11 @@ print("Writing delta table...")
     .mode("overwrite")
     .format("delta")
     .partitionBy("year")
+<<<<<<< HEAD
     .save("s3://datalake-vini-igti-edc-tf/raw-data/rais")
+=======
+    .save("s3://datalake-ney-igti-edc-tf/staging-zone/enem")
+>>>>>>> parent of 8e0743c (fix spark configs)
 )
 
 

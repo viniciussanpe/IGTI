@@ -28,7 +28,11 @@ from delta.tables import *
 logger.info("Produzindo novos dados...")
 rais = (
     spark.read.format("delta")
+<<<<<<< HEAD
     .load("s3://datalake-vini-igti-edc-tf/raw-data/rais")
+=======
+    .load("s3://datalake-ney-igti-edc-tf/staging-zone/enem")
+>>>>>>> parent of 8e0743c (fix spark configs)
 )
 
 rais = (
@@ -119,6 +123,14 @@ rais = (
     .withColumn("vl_rem_novembro_sc", f.regexp_replace("vl_rem_novembro_sc", ',', '.').cast('double'))
 )
 
+<<<<<<< HEAD
+=======
+logger.info("Pega os dados do Enem velhos na tabela Delta...")
+enemvelho = DeltaTable.forPath(spark, "s3://datalake-ney-igti-edc-tf/staging-zone/enem")
+
+
+logger.info("Realiza o UPSERT...")
+>>>>>>> parent of 8e0743c (fix spark configs)
 (
     rais
     .coalesce(50)
